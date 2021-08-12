@@ -2,6 +2,7 @@ import styled, { css, DefaultTheme } from 'styled-components'
 import { darken } from 'polished'
 
 import { RibbonColors, RibbonProps } from '.'
+import media from 'styled-media-query'
 
 const wrapperModifiers = {
   color: (theme: DefaultTheme, color: RibbonColors) => css`
@@ -56,5 +57,17 @@ export const Wrapper = styled.div<Omit<RibbonProps, 'children'>>`
     }
     ${!!size && wrapperModifiers[size](theme)}
     ${!!color && wrapperModifiers.color(theme, color)}
+    ${media.lessThan('large')`
+      right: 0;
+      &::before {
+        display: none;
+      }
+    `}
+    ${media.lessThan('small')`
+      right: 0;
+      &::before {
+        display: none;
+      }
+    `}
   `}
 `

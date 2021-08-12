@@ -11,13 +11,17 @@ export default {
     children: {
       type: 'string'
     }
+  },
+  parameters: {
+    layout: 'fullscreen'
   }
 } as Meta
 
 export const Default: Story<RibbonProps> = (args) => (
   <div
     style={{
-      width: '40rem',
+      width: '90%',
+      margin: '0 auto',
       height: '25rem',
       position: 'relative',
       backgroundColor: '#888'
