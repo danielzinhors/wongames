@@ -24,8 +24,7 @@
   "lint-staged": {
     "src/**/*": [
       "yarn lint --fix",
-      "yarn test --findRelatedTests --bail",
-      "tsc --project tsconfig.json --noEmit"
+      "yarn test --findRelatedTests --bail"
     ]
   },
   "dependencies": {
