@@ -48,6 +48,7 @@ export const Content = styled.div`
     position: relative;
     height: 100%;
     margin: ${theme.spacings.xsmall};
+    margin-top: ${theme.spacings.small};
   `}
 `
 
