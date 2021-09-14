@@ -90,3 +90,8 @@ export const ContentWrapper = styled.div`
     }
   `}
 `
+
+export const LinkAux = styled.a`
+  width: fit-content;
+  height: fit-content;
+`
