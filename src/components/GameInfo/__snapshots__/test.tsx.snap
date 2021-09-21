@@ -151,6 +151,8 @@ exports[`<GameInfo /> should render game informations 1`] = `
   position: absolute;
   background: #FAFAFA;
   padding: 2.4rem;
+  width: 100%;
+  max-width: min(130rem,100%);
 }
 
 .c0 .c2 {

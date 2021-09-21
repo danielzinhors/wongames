@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
     position: absolute;
     background: ${theme.colors.white};
     padding: ${theme.spacings.small};
+    width: 100%;
+    max-width: min(${theme.grid.container}, 100%);
 
     ${RibbonStyles.Wrapper} {
       right: -1rem;
