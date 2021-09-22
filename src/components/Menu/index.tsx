@@ -24,10 +24,16 @@ const Menu = ({ username }: MenuProps) => {
         </S.IconWrapper>
       </MediaMatch>
       <S.LogoWrapper>
-        <Logo hideOnMobile />
+        <Link href="/" passHref>
+          <S.Link>
+            <Logo hideOnMobile />
+          </S.Link>
+        </Link>
       </S.LogoWrapper>
       <MediaMatch greaterThan="medium">
-        <S.MenuLink href="#">Home</S.MenuLink>
+        <Link href="/" passHref>
+          <S.MenuLink>Home</S.MenuLink>
+        </Link>
         <S.MenuLink href="#">Explore</S.MenuLink>
       </MediaMatch>
       <S.MenuGroup>

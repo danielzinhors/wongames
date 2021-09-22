@@ -152,3 +152,5 @@ export const CreateAcount = styled.a`
     border-bottom: 0.2rem solid ${theme.colors.primary};
   `}
 `
+
+export const Link = styled.a``
