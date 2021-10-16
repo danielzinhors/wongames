@@ -5,11 +5,15 @@ import * as S from './styles'
 
 export type EmptyProps = {
   title: string
-  description: string
+  description?: string
   hasLink?: boolean
 }
 
-const Empty = ({ title, description, hasLink }: EmptyProps) => (
+const Empty = ({
+  title,
+  description = 'Go back and explore great games and offers',
+  hasLink
+}: EmptyProps) => (
   <S.Wrapper>
     <S.Image
       src="/img/empty.svg"
