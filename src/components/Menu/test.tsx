@@ -9,7 +9,7 @@ describe('<Menu />', () => {
 
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/search/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/open shopping cart/i)).toBeInTheDocument()
+    expect(screen.getAllByLabelText(/Shopping cart/i)).toHaveLength(2)
   })
 
   it('should handle the open/close mobile menu', () => {
@@ -32,16 +32,16 @@ describe('<Menu />', () => {
 
   it('shold show register box when logged out', () => {
     renderWithTheme(<Menu />)
-    expect(screen.queryByText(/My acoount/i)).not.toBeInTheDocument()
-    expect(screen.queryByText(/Wishilist/i)).not.toBeInTheDocument()
+    // expect(screen.queryByText(/My profile/i)).not.toBeInTheDocument()
+    // expect(screen.queryByText(/Wishilist/i)).not.toBeInTheDocument()
     expect(screen.getAllByText(/Sign in/i)).toHaveLength(2)
     expect(screen.getByText(/Sign Up/i)).toBeInTheDocument()
   })
 
   it('shold show whishilist and create account when logged in', () => {
     renderWithTheme(<Menu username="will" />)
-    expect(screen.getByText(/My acoount/i)).toBeInTheDocument()
-    expect(screen.getByText(/Wishilist/i)).toBeInTheDocument()
+    // expect(screen.getByText(/My profile/i)).toBeInTheDocument()
+    // expect(screen.getByText(/Wishilist/i)).toBeInTheDocument()
     expect(screen.queryByText(/Sign in/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/Sign Up/i)).not.toBeInTheDocument()
   })
