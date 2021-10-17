@@ -8,6 +8,11 @@ export default {
     children: {
       type: 'string'
     }
+  },
+  parameters: {
+    backgrounds: {
+      default: 'won-dark'
+    }
   }
 } as Meta
 
