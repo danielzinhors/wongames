@@ -8,7 +8,7 @@ const Items = [
       flag: 'mastercard',
       img: '/img/cards/mastercard.png',
       number: '*** *** **** 4326',
-      purchaseDate: 'Purchase made on 07/20/2020 at 20:32'
+      puschaseDate: 'Purchase made on 07/20/2020 at 20:32'
     }
   },
   {
@@ -20,7 +20,7 @@ const Items = [
       flag: 'visa',
       img: '/img/cards/visa.png',
       number: '*** *** **** 5423',
-      purchaseDate: 'Purchase made on 08/20/2020 at 21:12'
+      puschaseDate: 'Purchase made on 08/20/2020 at 21:12'
     }
   }
 ]
