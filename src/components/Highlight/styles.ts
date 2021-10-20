@@ -4,31 +4,6 @@ import { HighlightProps } from '.'
 
 type WrapperProps = Pick<HighlightProps, 'backgroundImage' | 'alignment'>
 
-const WrapperModifiers = {
-  right: () => css`
-    grid-template-areas: 'floatimage content';
-    ${Wrapper} {
-      grid-template-columns: 1.3fr 2fr;
-    }
-    ${Content} {
-      text-align: right;
-    }
-  `,
-  left: () => css`
-    grid-template-areas: 'content floatimage';
-    ${Wrapper} {
-      grid-template-columns: 2fr 1.3fr;
-    }
-    ${Content} {
-      text-align: left;
-    }
-
-    ${FloatImage} {
-      justify-self: end;
-    }
-  `
-}
-
 export const Wrapper = styled.section<WrapperProps>`
   ${({ backgroundImage, alignment }) => css`
     position: relative;
@@ -47,7 +22,30 @@ export const Wrapper = styled.section<WrapperProps>`
     ${media.greaterThan('medium')`
       height: 32rem;
     `}
-    ${!!alignment && WrapperModifiers[alignment!]()};
+    ${alignment === 'right' &&
+    `
+         grid-template-areas: 'floatimage content';
+         div {
+           grid-template-columns: 1.3fr 2fr;
+         }
+         ${Content} {
+           text-align: right;
+         }
+    `}
+    ${alignment === 'left' &&
+    `
+        grid-template-areas: 'content floatimage';
+        div {
+          grid-template-columns: 2fr 1.3fr;
+        }
+        ${Content} {
+          text-align: left;
+        }
+
+        ${FloatImage} {
+          justify-self: end;
+        }
+    `}
   `}
 `
 export const FloatImage = styled.img`
