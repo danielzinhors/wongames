@@ -38,6 +38,7 @@ export const ImageBox = styled.a`
   > img {
     width: 100%;
     max-width: 100%;
+    height: 100%;
   }
 `
 

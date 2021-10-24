@@ -1,21 +1,48 @@
 import Game, { GameTemplateProps } from 'templates/Game'
-import mockItems from 'components/Gallery/mock'
+//import mockItems from 'components/Gallery/mock'
 import gamesMok from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
+import { initializeApollo } from '../../utils/apollo'
+import { useRouter } from 'next/router'
+import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
+import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries/games'
+import { GetStaticProps } from 'next'
+import {
+  QueryGameBySlug,
+  QueryGameBySlugVariables
+} from 'graphql/generated/QueryGameBySlug'
+
+const apolloClient = initializeApollo()
 
 export default function Index(props: GameTemplateProps) {
+  const router = useRouter()
+  // se a rota não tiver sido gerada ainda
+  // você pode mostrar um loading
+  // uma tela de esqueleto
+  if (router.isFallback) return null
+
   return <Game {...props} />
 }
 
 //gerar em build time
 export async function getStaticPaths() {
-  return {
+  /*return { // use para mock
     paths: [{ params: { slug: 'cyberpunk-2077' } }],
     fallback: false
-  }
+  }*/
+  const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
+    query: QUERY_GAMES,
+    variables: { limit: 9 }
+  })
+
+  const paths = data.games.map(({ slug }) => ({
+    params: { slug }
+  }))
+
+  return { paths, fallback: true }
 }
 
-export async function getStaticProps() {
+/*export async function getStaticProps() { // mockado
   const descriptionHTML = `
     <img src="https://items.gog.com/not_a_cp/ENG_product-page-addons-2020_yellow_on_black.png"><br>
     * Exclusive Digital Comic - Cyberpunk 2077: Big City Dreams will be available in English only.
@@ -53,6 +80,53 @@ export async function getStaticProps() {
         publisher: 'CD PROJEKT RED',
         rating: 'BR18',
         genres: ['Action', 'Role-playing']
+      },
+      upcomingGames: gamesMok,
+      upcomingHighlight: highlightMock,
+      recommendedGames: gamesMok
+    }
+  }
+}*/
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { data } = await apolloClient.query<
+    QueryGameBySlug,
+    QueryGameBySlugVariables
+  >({
+    query: QUERY_GAME_BY_SLUG,
+    variables: { slug: `${params?.slug}` }
+  })
+
+  if (!data.games.length) {
+    return { notFound: true }
+  }
+
+  const game = data.games[0]
+
+  return {
+    props: {
+      revalidate: 60,
+      cover: `http://localhost:1337${game.cover?.src}`,
+      gameInfo: {
+        title: game.name,
+        price: new Intl.NumberFormat('en', {
+          style: 'currency',
+          currency: 'USD'
+        }).format(game.price),
+        description: game.short_description
+      },
+      gallery: game.gallery.map((image) => ({
+        src: `http://localhost:1337${image.src}`,
+        label: image.label
+      })),
+      description: game.description,
+      details: {
+        developer: game.developers[0].name,
+        releaseDate: game.release_date,
+        platforms: game.platforms.map((platform) => platform.name),
+        publisher: game.publisher?.name,
+        rating: game.rating,
+        genres: game.categories.map((category) => category.name)
       },
       upcomingGames: gamesMok,
       upcomingHighlight: highlightMock,
