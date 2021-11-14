@@ -10,7 +10,7 @@ export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />
 }
 
-// ATENÇÃO:
+// ATENÇÃO:dcdasasdasd
 // os métodos getStaticProps/getServerSideProps SÓ FUNCIONAM EM PAGES
 // getStaticProps => gerar estático em build time (gatsby)
 // getServerSideProps => gerar via ssr a cada request (nunca vai para o bundle do client)
