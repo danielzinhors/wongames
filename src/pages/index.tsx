@@ -20,7 +20,7 @@ export async function getServerSideProps() {
   const apolloClient = initializeApollo()
 
   const {
-    data: { banners, newGames }
+    data: { banners, newGames, upCommingGames, freeGames }
   } = await apolloClient.query<QueryHome>({ query: QUERY_HOME })
   return {
     props: {
@@ -46,11 +46,22 @@ export async function getServerSideProps() {
       })),
       mostPopularHighlight: highligthMock,
       mostPopularGames: gamesCardMock,
-      upcommingGames: gamesCardMock,
+      upcommingGames: upCommingGames.map((game) => ({
+        title: game.name,
+        slug: game.slug,
+        developer: game.developers[0].name,
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: game.price
+      })),
       upcommingHighligth: highligthMock,
-      upcommingMoreGames: gamesCardMock,
       freeHighligth: highligthMock,
-      freeGames: gamesCardMock
+      freeGames: freeGames.map((game) => ({
+        title: game.name,
+        slug: game.slug,
+        developer: game.developers[0].name,
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: game.price
+      }))
     }
   }
 }
