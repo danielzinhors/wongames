@@ -48,7 +48,9 @@ export async function getServerSideProps() {
         title: sections?.popularGames?.highlight?.title,
         subtitle: sections?.popularGames?.highlight?.subtitle,
         backgroundImage: `http://localhost:1337${sections?.popularGames?.highlight?.backgroundImage?.url}`,
-        floatImage: `http://localhost:1337${sections?.popularGames?.highlight?.floatImage?.url}`,
+        ...(sections?.popularGames?.highlight?.floatImage && {
+          floatImage: `http://localhost:1337${sections?.popularGames?.highlight?.floatImage?.url}`
+        }),
         buttonLabel: sections?.popularGames?.highlight?.buttonLabel,
         buttonLink: sections?.popularGames?.highlight?.buttonLink,
         alignment: sections?.popularGames?.highlight?.alignment
@@ -60,40 +62,56 @@ export async function getServerSideProps() {
         img: `http://localhost:1337${game.cover?.url}`,
         price: game.price
       })),
-      upcommingGamesTitle: sections?.upcomingGames?.title,
-      upcommingHighligth: {
-        title: sections?.upcomingGames?.highlight?.title,
-        subtitle: sections?.upcomingGames?.highlight?.subtitle,
-        backgroundImage: `http://localhost:1337${sections?.upcomingGames?.highlight?.backgroundImage?.url}`,
-        floatImage: `http://localhost:1337${sections?.upcomingGames?.highlight?.floatImage?.url}`,
-        buttonLabel: sections?.upcomingGames?.highlight?.buttonLabel,
-        buttonLink: sections?.upcomingGames?.highlight?.buttonLink,
-        alignment: sections?.upcomingGames?.highlight?.alignment
-      },
-      upcommingGames: upCommingGames.map((game) => ({
-        title: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
-        price: game.price
-      })),
-      freeGamesTitle: sections?.freeGames?.title,
-      freeHighligth: {
-        title: sections?.freeGames?.highlight?.title,
-        subtitle: sections?.freeGames?.highlight?.subtitle,
-        backgroundImage: `http://localhost:1337${sections?.freeGames?.highlight?.backgroundImage?.url}`,
-        floatImage: `http://localhost:1337${sections?.freeGames?.highlight?.floatImage?.url}`,
-        buttonLabel: sections?.freeGames?.highlight?.buttonLabel,
-        buttonLink: sections?.freeGames?.highlight?.buttonLink,
-        alignment: sections?.freeGames?.highlight?.alignment
-      },
-      freeGames: freeGames.map((game) => ({
-        title: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
-        price: game.price
-      }))
+      ...(sections?.upcomingGames?.title && {
+        upcommingGamesTitle: sections?.upcomingGames?.title
+      }),
+      ...(sections?.upcomingGames?.highlight && {
+        upcommingHighligth: {
+          title: sections?.upcomingGames?.highlight?.title,
+          subtitle: sections?.upcomingGames?.highlight?.subtitle,
+          backgroundImage: `http://localhost:1337${sections?.upcomingGames?.highlight?.backgroundImage?.url}`,
+          ...(sections?.upcomingGames?.highlight?.floatImage && {
+            floatImage: `http://localhost:1337${sections?.upcomingGames?.highlight?.floatImage?.url}`
+          }),
+          buttonLabel: sections?.upcomingGames?.highlight?.buttonLabel,
+          buttonLink: sections?.upcomingGames?.highlight?.buttonLink,
+          alignment: sections?.upcomingGames?.highlight?.alignment
+        }
+      }),
+      ...(upCommingGames.length && {
+        upcommingGames: upCommingGames.map((game) => ({
+          title: game.name,
+          slug: game.slug,
+          developer: game.developers[0].name,
+          img: `http://localhost:1337${game.cover?.url}`,
+          price: game.price
+        }))
+      }),
+      ...(sections?.freeGames?.title && {
+        freeGamesTitle: sections?.freeGames?.title
+      }),
+      ...(sections?.freeGames?.highlight && {
+        freeHighligth: {
+          title: sections?.freeGames?.highlight?.title,
+          subtitle: sections?.freeGames?.highlight?.subtitle,
+          backgroundImage: `http://localhost:1337${sections?.freeGames?.highlight?.backgroundImage?.url}`,
+          ...(sections?.freeGames?.highlight?.floatImage && {
+            floatImage: `http://localhost:1337${sections?.freeGames?.highlight?.floatImage?.url}`
+          }),
+          buttonLabel: sections?.freeGames?.highlight?.buttonLabel,
+          buttonLink: sections?.freeGames?.highlight?.buttonLink,
+          alignment: sections?.freeGames?.highlight?.alignment
+        }
+      }),
+      ...(freeGames.length && {
+        freeGames: freeGames.map((game) => ({
+          title: game.name,
+          slug: game.slug,
+          developer: game.developers[0].name,
+          img: `http://localhost:1337${game.cover?.url}`,
+          price: game.price
+        }))
+      })
     }
   }
 }
