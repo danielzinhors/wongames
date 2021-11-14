@@ -9,7 +9,7 @@ export default function GamesPage(props: GameTemplateProps) {
   return <GamesTemplate {...props} />
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apolloClient = initializeApollo()
 
   const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
@@ -20,7 +20,7 @@ export async function getStaticProps() {
   return {
     props: {
       revalidate: 60,
-      games: data.games.map((game) => ({
+      games: data.games?.map((game) => ({
         slug: game.slug,
         title: game.name,
         developer: game.developers[0].name,

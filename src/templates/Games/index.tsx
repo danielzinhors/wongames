@@ -8,10 +8,10 @@ import Grid from 'components/Grid'
 
 export type GameTemplateProps = {
   games?: GameCardProps[]
-  filterItems: ItemProps[]
+  filterItems?: ItemProps[]
 }
 
-const GamesTemplate = ({ games = [], filterItems }: GameTemplateProps) => {
+const GamesTemplate = ({ games = [], filterItems = [] }: GameTemplateProps) => {
   const handleFilter = () => {
     return
   }
