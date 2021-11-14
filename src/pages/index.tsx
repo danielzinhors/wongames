@@ -1,4 +1,3 @@
-import gamesCardMock from 'components/GameCardSlider/mock'
 import highligthMock from 'components/Highlight/mock'
 import { QueryHome } from 'graphql/generated/QueryHome'
 import { QUERY_HOME } from 'graphql/queries/home '
@@ -20,7 +19,7 @@ export async function getServerSideProps() {
   const apolloClient = initializeApollo()
 
   const {
-    data: { banners, newGames, upCommingGames, freeGames }
+    data: { banners, newGames, upCommingGames, freeGames, sections }
   } = await apolloClient.query<QueryHome>({ query: QUERY_HOME })
   return {
     props: {
@@ -37,6 +36,7 @@ export async function getServerSideProps() {
           ribbonSize: banner.ribbon.size
         })
       })),
+      newGamesTitle: sections?.newGames?.title,
       newGames: newGames.map((game) => ({
         title: game.name,
         slug: game.slug,
@@ -44,8 +44,17 @@ export async function getServerSideProps() {
         img: `http://localhost:1337${game.cover?.url}`,
         price: game.price
       })),
+      mostPopularTitle: sections?.popularGames?.title,
       mostPopularHighlight: highligthMock,
-      mostPopularGames: gamesCardMock,
+      mostPopularGames: sections!.popularGames!.games.map((game) => ({
+        title: game.name,
+        slug: game.slug,
+        developer: game.developers[0].name,
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: game.price
+      })),
+      upcommingGamesTitle: sections?.upcomingGames?.title,
+      upcommingHighligth: highligthMock,
       upcommingGames: upCommingGames.map((game) => ({
         title: game.name,
         slug: game.slug,
@@ -53,7 +62,7 @@ export async function getServerSideProps() {
         img: `http://localhost:1337${game.cover?.url}`,
         price: game.price
       })),
-      upcommingHighligth: highligthMock,
+      freeGamesTitle: sections?.freeGames?.title,
       freeHighligth: highligthMock,
       freeGames: freeGames.map((game) => ({
         title: game.name,

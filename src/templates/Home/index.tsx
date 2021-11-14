@@ -16,6 +16,10 @@ export type HomeTemplateProps = {
   upcommingHighligth: HighlightProps
   freeHighligth: HighlightProps
   freeGames: GameCardProps[]
+  newGamesTitle: string
+  mostPopularTitle: string
+  upcommingGamesTitle: string
+  freeGamesTitle: string
 }
 
 const Home = ({
@@ -26,7 +30,11 @@ const Home = ({
   upcommingGames,
   upcommingHighligth,
   freeGames,
-  freeHighligth
+  freeHighligth,
+  newGamesTitle,
+  mostPopularTitle,
+  upcommingGamesTitle,
+  freeGamesTitle
 }: HomeTemplateProps) => (
   <Base>
     <Container>
@@ -37,25 +45,25 @@ const Home = ({
 
     <S.SectionNews>
       <Container>
-        <Showcase title={'News'} games={newGames} color="black" />
+        <Showcase title={newGamesTitle} games={newGames} color="black" />
       </Container>
     </S.SectionNews>
 
     <Container>
       <Showcase
-        title={'Most Popular'}
+        title={mostPopularTitle}
         highlight={mostPopularHighlight}
         games={mostPopularGames}
       />
 
       <Showcase
-        title={'Upcomming'}
+        title={upcommingGamesTitle}
         games={upcommingGames}
         highlight={upcommingHighligth}
       />
 
       <Showcase
-        title={'Free games'}
+        title={freeGamesTitle}
         highlight={freeHighligth}
         games={freeGames}
       />
