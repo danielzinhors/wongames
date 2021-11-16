@@ -13,6 +13,7 @@ import Divider from 'components/Divider'
 
 export type GameTemplateProps = {
   cover: string
+  recommendedTitle?: string
   gameInfo: GameInfoProps
   gallery?: GalleryImageProps[]
   description: string
@@ -24,6 +25,7 @@ export type GameTemplateProps = {
 
 const Game = ({
   cover,
+  recommendedTitle = 'You may like these games',
   gameInfo,
   gallery,
   description,
@@ -60,7 +62,7 @@ const Game = ({
           highlight={upcomingHighlight}
           games={upcomingGames}
         />
-        <Showcase title={'You may like these games'} games={recommendedGames} />
+        <Showcase title={recommendedTitle} games={recommendedGames} />
       </Container>
     </S.Main>
   </Base>

@@ -11,6 +11,7 @@ import {
   QueryGameBySlug,
   QueryGameBySlugVariables
 } from 'graphql/generated/QueryGameBySlug'
+import { gamesMapper } from 'utils/mappers'
 
 const apolloClient = initializeApollo()
 
@@ -89,19 +90,18 @@ export async function getStaticPaths() {
 }*/
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { data } = await apolloClient.query<
-    QueryGameBySlug,
-    QueryGameBySlugVariables
-  >({
+  const {
+    data: { games, recommended }
+  } = await apolloClient.query<QueryGameBySlug, QueryGameBySlugVariables>({
     query: QUERY_GAME_BY_SLUG,
     variables: { slug: `${params?.slug}` }
   })
 
-  if (!data.games.length) {
+  if (!games.length) {
     return { notFound: true }
   }
 
-  const game = data.games[0]
+  const game = games[0]
 
   return {
     props: {
@@ -130,7 +130,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
       upcomingGames: gamesMok,
       upcomingHighlight: highlightMock,
-      recommendedGames: gamesMok
+      recommendedTitle: recommended?.section?.title,
+      recommendedGames: gamesMapper(recommended?.section?.games)
     }
   }
 }

@@ -1,6 +1,5 @@
 import GamesTemplate, { GameTemplateProps } from 'templates/Games'
 import filterItemsMock from 'components/ExploreSidebar/mock'
-//import gamesMock from 'components/GameCardSlider/mock'
 import { initializeApollo } from 'utils/apollo'
 import { QUERY_GAMES } from 'graphql/queries/games'
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
@@ -26,7 +25,7 @@ export async function getServerSideProps() {
         developer: game.developers[0].name,
         img: `http://localhost:1337${game.cover!.url}`,
         price: game.price
-      })), //gamesMock
+      })),
       filterItems: filterItemsMock
     }
   }
