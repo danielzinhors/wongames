@@ -40,6 +40,21 @@ export interface QueryRecommended_recommended_section_games_developers {
   name: string;
 }
 
+export interface QueryRecommended_recommended_section_games_publisher {
+  __typename: "Publisher";
+  name: string;
+}
+
+export interface QueryRecommended_recommended_section_games_categories {
+  __typename: "Category";
+  name: string;
+}
+
+export interface QueryRecommended_recommended_section_games_platforms {
+  __typename: "Platform";
+  name: string;
+}
+
 export interface QueryRecommended_recommended_section_games {
   __typename: "Game";
   id: string;
@@ -47,6 +62,9 @@ export interface QueryRecommended_recommended_section_games {
   slug: string;
   cover: QueryRecommended_recommended_section_games_cover | null;
   developers: QueryRecommended_recommended_section_games_developers[];
+  publisher: QueryRecommended_recommended_section_games_publisher | null;
+  categories: QueryRecommended_recommended_section_games_categories[];
+  platforms: QueryRecommended_recommended_section_games_platforms[];
   price: number;
 }
 

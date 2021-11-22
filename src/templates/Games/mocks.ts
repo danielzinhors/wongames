@@ -17,6 +17,9 @@ export const gamesMock = {
           cover: {
             url: 'sample-game.jpg'
           },
+          publisher: [{ name: 'Activision' }],
+          categories: [{ name: 'Adventure' }],
+          platforms: [{ name: 'Windows' }],
           __typename: 'Game'
         }
       ]
@@ -41,6 +44,9 @@ export const fetchMoreMock = {
           cover: {
             url: 'sample-game.jpg'
           },
+          publisher: [{ name: 'Activision' }],
+          categories: [{ name: 'Adventure' }],
+          platforms: [{ name: 'Windows' }],
           __typename: 'Game'
         }
       ]

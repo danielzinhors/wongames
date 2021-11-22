@@ -11,6 +11,15 @@ export const GameFragment = gql`
     developers {
       name
     }
+    publisher {
+      name
+    }
+    categories {
+      name
+    }
+    platforms {
+      name
+    }
     price
   }
 `
