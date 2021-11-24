@@ -19,7 +19,8 @@ export type GameTemplateProps = {
 const GamesTemplate = ({ filterItems }: GameTemplateProps) => {
   const { push, query } = useRouter()
 
-  const { data, fetchMore } = useQueryGames({
+  const { data, loading, fetchMore } = useQueryGames({
+    notifyOnNetworkStatusChange: true,
     variables: {
       limit: 15,
       where: parseQueryStringToWhere({ queryString: query, filterItems }),
@@ -34,6 +35,11 @@ const GamesTemplate = ({ filterItems }: GameTemplateProps) => {
       </S.Amp>
     )
   }
+
+  const { games, gamesConnection } = data
+
+  const hasMoreGames = games.length < (gamesConnection?.values?.length || 0)
+
   const handleFilter = (items: ParsedUrlQueryInput) => {
     push({
       pathname: '/games',
@@ -65,10 +71,10 @@ const GamesTemplate = ({ filterItems }: GameTemplateProps) => {
           />
 
           <section>
-            {data?.games.length ? (
+            {games.length ? (
               <>
                 <Grid>
-                  {data?.games.map((game) => (
+                  {games.map((game) => (
                     <GameCard
                       key={game.slug}
                       slug={game.slug}
@@ -79,12 +85,21 @@ const GamesTemplate = ({ filterItems }: GameTemplateProps) => {
                     />
                   ))}
                 </Grid>
-                <S.ShowMore>
-                  <S.ShowMoreButton onClick={handleShowMore}>
-                    <p>Show More</p>
-                    <ArrowDown size={35} />
-                  </S.ShowMoreButton>
-                </S.ShowMore>
+                {hasMoreGames && (
+                  <S.ShowMore>
+                    {loading ? (
+                      <S.ShowMoreLoading
+                        src="/img/dots.svg"
+                        alt="Loading more games..."
+                      />
+                    ) : (
+                      <S.ShowMoreButton role="button" onClick={handleShowMore}>
+                        <p>Show More</p>
+                        <ArrowDown size={35} />
+                      </S.ShowMoreButton>
+                    )}
+                  </S.ShowMore>
+                )}
               </>
             ) : (
               <Empty

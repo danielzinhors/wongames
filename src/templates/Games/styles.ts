@@ -51,3 +51,6 @@ export const ShowMoreButton = styled.button`
     }
   `}
 `
+export const ShowMoreLoading = styled.img`
+  width: 4rem;
+`

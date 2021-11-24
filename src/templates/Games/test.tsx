@@ -4,7 +4,7 @@ import filterItemsMock from 'components/ExploreSidebar/mock'
 import { MockedProvider } from '@apollo/client/testing'
 
 import Games from '.'
-import { fetchMoreMock, gamesMock } from './mocks'
+import { fetchMoreMock, gamesMock, noGamesMock } from './mocks'
 import userEvent from '@testing-library/user-event'
 import apolloCache from 'utils/apolloCache'
 
@@ -34,26 +34,24 @@ jest.mock('next/link', () => ({
 }))
 
 describe('<Games />', () => {
-  it('should render loading when starting the template', () => {
+  it('should render empty when no games found', async () => {
     renderWithTheme(
-      <MockedProvider mocks={[]} addTypename={false}>
+      <MockedProvider mocks={[noGamesMock]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
 
-    expect(screen.getByLabelText(/Loading/i)).toBeInTheDocument()
+    expect(
+      await screen.findByText(/We didn't find any games with this filter/i)
+    ).toBeInTheDocument()
   })
-})
 
-describe('<Games />', () => {
   it('should render sections', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
-    //aguardando os dados
-    expect(screen.getByLabelText(/Loading/i)).toBeInTheDocument()
     //agora já com os dados
     // get quando tem o elemento
     // query qndo não temo elemento
@@ -64,18 +62,6 @@ describe('<Games />', () => {
     expect(
       await screen.findByRole('button', { name: /show more/i })
     ).toBeInTheDocument()
-  })
-
-  it('should render empty when no games found', async () => {
-    renderWithTheme(
-      <MockedProvider mocks={[]} addTypename={false}>
-        <Games filterItems={filterItemsMock} />
-      </MockedProvider>
-    )
-
-    // expect(
-    //   await screen.findByText(/We didn't find any games with this filter/i)
-    // ).toBeInTheDocument()
   })
 
   it('should render more games when show more is clicked', async () => {
