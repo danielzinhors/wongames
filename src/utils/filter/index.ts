@@ -30,7 +30,6 @@ export const parseQueryStringToFilter = ({
 }: ParseArgs) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const obj: any = {}
-
   Object.keys(queryString).forEach((key) => {
     const item = filterItems?.find((item) => item.name === key)
     const isCheckbox = item?.type === 'checkbox'

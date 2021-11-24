@@ -26,7 +26,7 @@ describe('<ExploreSidebar />', () => {
     renderWithTheme(<ExploreSidebar items={items} onFilter={jest.fn} />)
 
     expect(
-      screen.getByRole('checkbox', { name: /under \$50/i })
+      screen.getByRole('radio', { name: /under \$50/i })
     ).toBeInTheDocument()
 
     expect(

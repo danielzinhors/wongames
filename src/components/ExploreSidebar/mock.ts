@@ -2,7 +2,7 @@ const items = [
   {
     title: 'Price',
     name: 'price',
-    type: 'checkbox',
+    type: 'radio',
     fields: [
       {
         label: 'Under $50',
