@@ -15,7 +15,7 @@ export default function Index(props: HomeTemplateProps) {
 // getServerSideProps => gerar via ssr a cada request (nunca vai para o bundle do client)
 // getInitialProps => gerar via ssr a cada request (vai para o client, faz hydrate do lado do client depois do 1 req)
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const apolloClient = initializeApollo()
   const TODAY = new Date().toISOString().slice(0, 10)
   const {
@@ -24,11 +24,12 @@ export async function getServerSideProps() {
     query: QUERY_HOME,
     variables: {
       date: TODAY
-    }
+    },
+    fetchPolicy: 'no-cache' //garantir sempre dados novos no revalidate
   })
   return {
+    revalidate: 10,
     props: {
-      revalidate: 60,
       banners: bannerMapper(banners),
       newGamesTitle: sections?.newGames?.title,
       newGames: gamesMapper(newGames),

@@ -25,7 +25,7 @@ export const gamesMock = {
     data: {
       games: [
         {
-          id: 'sample-game',
+          id: '1',
           name: 'Sample Game',
           slug: 'sample-game',
           price: 518.39,
@@ -56,7 +56,7 @@ export const fetchMoreMock = {
     data: {
       games: [
         {
-          id: 'fetch-more',
+          id: '2',
           name: 'Fetch More Game',
           slug: 'fetch-more',
           price: 518.39,
