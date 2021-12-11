@@ -4,7 +4,7 @@ describe('getStorageItem()', () => {
   beforeEach(() => {
     window.localStorage.clear()
   })
-  it('sould return the item from localStorage', () => {
+  it('should return the item from localStorage', () => {
     window.localStorage.setItem(
       'WONGAMES_cartItems',
       JSON.stringify(['1', '2'])
