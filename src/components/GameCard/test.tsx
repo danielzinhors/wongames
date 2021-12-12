@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from 'utils/test-utils'
+import { render, screen, fireEvent } from 'utils/tests/test-utils'
 import theme from 'styles/theme'
 
 import GameCard from '.'

@@ -1,4 +1,4 @@
-import { render, screen } from 'utils/test-utils'
+import { render, screen } from 'utils/tests/test-utils'
 
 import galleryMock from 'components/Gallery/mock'
 import gameInfoMock from 'components/GameInfo/mock'

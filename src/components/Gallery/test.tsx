@@ -1,5 +1,5 @@
 import 'match-media-mock'
-import { render, screen, fireEvent } from 'utils/test-utils'
+import { render, screen, fireEvent } from 'utils/tests/test-utils'
 import mockItems from './mock'
 
 import Gallery from '.'

@@ -1,4 +1,4 @@
-import { render } from 'utils/test-utils'
+import { render } from 'utils/tests/test-utils'
 
 import { FormWrapper, FormLink, LinkAux } from '.'
 
