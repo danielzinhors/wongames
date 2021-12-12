@@ -1,11 +1,10 @@
-import { fireEvent, screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { render, screen, fireEvent } from 'utils/test-utils'
 
 import Menu from '.'
 
 describe('<Menu />', () => {
   it('should render the menu', () => {
-    renderWithTheme(<Menu />)
+    render(<Menu />)
 
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/search/i)).toBeInTheDocument()
@@ -13,7 +12,7 @@ describe('<Menu />', () => {
   })
 
   it('should handle the open/close mobile menu', () => {
-    renderWithTheme(<Menu />)
+    render(<Menu />)
     //TDD create
     //selecionar o nosso Menufull
     const fullMenuElement = screen.getByRole('navigation', { hidden: true })
@@ -31,7 +30,7 @@ describe('<Menu />', () => {
   })
 
   it('shold show register box when logged out', () => {
-    renderWithTheme(<Menu />)
+    render(<Menu />)
     // expect(screen.queryByText(/My profile/i)).not.toBeInTheDocument()
     // expect(screen.queryByText(/Wishilist/i)).not.toBeInTheDocument()
     expect(screen.getAllByText(/Sign in/i)).toHaveLength(2)
@@ -39,7 +38,7 @@ describe('<Menu />', () => {
   })
 
   it('shold show whishilist and create account when logged in', () => {
-    renderWithTheme(<Menu username="will" />)
+    render(<Menu username="will" />)
     // expect(screen.getByText(/My profile/i)).toBeInTheDocument()
     // expect(screen.getByText(/Wishilist/i)).toBeInTheDocument()
     expect(screen.queryByText(/Sign in/i)).not.toBeInTheDocument()
