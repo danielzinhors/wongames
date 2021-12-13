@@ -31,12 +31,12 @@ describe('<CartList />', () => {
     expect(screen.queryByText(/total/i)).not.toBeInTheDocument()
   })
 
-  // it('should render loading', () => {
-  //   const cartProviderProps = {
-  //     ...CartContextDefaultValues,
-  //     loading: true
-  //   }
-  //   render(<CartList hasButton />, { cartProviderProps })
-  //   expect(screen.getByText(/loading/i)).toBeInTheDocument()
-  // })
+  it('should render loading', () => {
+    const cartProviderProps = {
+      ...CartContextDefaultValues,
+      loading: true
+    }
+    render(<CartList hasButton />, { cartProviderProps })
+    expect(screen.getByText(/loading/i)).toBeInTheDocument()
+  })
 })
