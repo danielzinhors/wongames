@@ -8,14 +8,6 @@ export default {
   args: {
     cards: mockItems
   },
-  argTypes: {
-    cards: {
-      type: ''
-    },
-    handlePayment: {
-      action: 'clicked'
-    }
-  },
   parameters: {
     backgrounds: {
       default: 'won-dark'

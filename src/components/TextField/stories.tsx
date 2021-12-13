@@ -11,10 +11,6 @@ export default {
     icon: <Email />,
     initialValue: '',
     placeholder: 'john.cage@gmail.com'
-  },
-  argTypes: {
-    onInput: { action: 'changed' },
-    icon: { type: '' }
   }
 } as Meta
 

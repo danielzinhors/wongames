@@ -5,15 +5,7 @@ import Button from '.'
 
 export default {
   title: 'Button',
-  component: Button,
-  argTypes: {
-    children: {
-      type: 'string'
-    },
-    icon: {
-      type: ''
-    }
-  }
+  component: Button
 } as Meta
 
 export const Default: Story = (args) => <Button {...args} />
