@@ -3,7 +3,7 @@ import Button from 'components/Button'
 import CartButton from 'components/CartButton'
 import Heading from 'components/Heading'
 import Ribbon from 'components/Ribbon'
-import formatPrice, { numberify } from 'utils/format-price'
+import formatPrice from 'utils/format-price'
 import * as S from './styles'
 
 export type GameInfoProps = {
@@ -19,7 +19,7 @@ const GameInfo = ({ id, title, description, price }: GameInfoProps) => (
       {title}
     </Heading>
     <Ribbon color="secondary">
-      {numberify(price) == '0.0' ? 'FREE' : formatPrice(price)}
+      {price == 0 ? 'FREE' : formatPrice(price)}
     </Ribbon>
     <S.Description>{description}</S.Description>
     <S.ButtonsWrapper>

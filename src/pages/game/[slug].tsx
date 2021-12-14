@@ -122,11 +122,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       cover: `http://localhost:1337${game.cover?.src}`,
       gameInfo: {
+        id: game.id,
         title: game.name,
-        price: new Intl.NumberFormat('en', {
-          style: 'currency',
-          currency: 'USD'
-        }).format(game.price),
+        price: game.price,
         description: game.short_description
       },
       gallery: game.gallery.map((image) => ({

@@ -4,7 +4,7 @@ import { Favorite, FavoriteBorder } from '@styled-icons/material-outlined'
 import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
 
 import * as S from './styles'
-import formatPrice, { numberify } from 'utils/format-price'
+import formatPrice from 'utils/format-price'
 import CartButton from 'components/CartButton'
 
 export type GameCardProps = {
@@ -64,11 +64,11 @@ const GameCard = ({
       <S.BuyBox>
         {!!promotionalPrice && (
           <S.Price isPromotional>
-            {numberify(price) == '0.0' ? 'FREE' : formatPrice(price)}
+            {price == 0 ? 'FREE' : formatPrice(price)}
           </S.Price>
         )}
         <S.Price>
-          {numberify(promotionalPrice || price) == '0.0'
+          {(promotionalPrice || price) == 0
             ? 'FREE'
             : formatPrice(promotionalPrice || price)}
         </S.Price>
