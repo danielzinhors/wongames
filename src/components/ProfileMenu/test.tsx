@@ -18,15 +18,14 @@ describe('<ProfileMenu />', () => {
       'href',
       '/profile/orders'
     )
-    expect(screen.getByRole('link', { name: /Sign out/i })).toHaveAttribute(
-      'href',
-      '/logout'
-    )
+    expect(
+      screen.getByRole('button', { name: /Sign out/i })
+    ).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('sholu render the menu with an active link defined', () => {
+  it('should render the menu with an active link defined', () => {
     render(<ProfileMenu activeLink="/profile/cards" />)
     expect(screen.getByRole('link', { name: /My cards/i })).toHaveStyle({
       background: theme.colors.primary,
