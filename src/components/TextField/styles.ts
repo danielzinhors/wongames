@@ -68,6 +68,15 @@ export const Input = styled.input<IconPositionProps>`
     outline: none;
     width: 100%;
     ${!disabled ? '' : 'disabled'}
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 ${theme.spacings.small}
+        ${theme.colors.lightGray} inset;
+      filter: none;
+      &::first-line {
+        font-family: ${theme.font.family};
+        font-size: ${theme.font.sizes.medium};
+      }
+    }
   `}
 `
 
