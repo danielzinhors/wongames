@@ -14,11 +14,18 @@ export const FormWrapper = styled.div`
     }
   `}
 `
-export const FormLoading = styled.img.attrs(() => ({
-  src: '/img/dots.svg',
-  alt: 'Waiting...'
-}))`
-  width: 4rem;
+
+export const FormError = styled.div`
+  ${({ theme }) => css`
+    text-align: center;
+    color: ${theme.colors.red};
+    font-size: ${theme.font.sizes.small};
+    svg {
+      width: 1.3rem;
+      color: ${theme.colors.red};
+      margin-right: 1rem;
+    }
+  `}
 `
 
 export const FormLink = styled.div`
@@ -40,4 +47,11 @@ export const LinkAux = styled.a`
       border-bottom: 0.1rem solid ${darken(0.1, theme.colors.secondary)};
     }
   `}
+`
+
+export const FormLoading = styled.img.attrs(() => ({
+  src: '/img/dots.svg',
+  alt: 'Waiting...'
+}))`
+  width: 4rem;
 `
