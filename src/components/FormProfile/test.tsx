@@ -2,9 +2,13 @@ import { render, screen } from 'utils/tests/test-utils'
 
 import FormProfile from '.'
 
+const props = {
+  email: 'admin@admin.com'
+}
+
 describe('<FormProfile />', () => {
   it('should render the profile form', () => {
-    render(<FormProfile />)
+    render(<FormProfile {...props} />)
     expect(
       screen.getByRole('heading', { name: /My profile/i })
     ).toBeInTheDocument()
@@ -13,10 +17,8 @@ describe('<FormProfile />', () => {
     expect(screen.getByRole('textbox', { name: /e-mail/i })).toBeInTheDocument()
 
     expect(
-      screen.getByPlaceholderText(/type your password/i)
-    ).toBeInTheDocument()
-
-    expect(screen.getByPlaceholderText(/new password/i)).toBeInTheDocument()
+      screen.getByRole('link', { name: /Reset Password/i })
+    ).toHaveAttribute('href', `/forgot-password?email=${props.email}`)
 
     expect(screen.getByRole('button', { name: /save/i })).toBeInTheDocument()
   })
