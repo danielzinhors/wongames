@@ -1,4 +1,9 @@
-import { signUpValidate, signInValidate } from '.'
+import {
+  signUpValidate,
+  signInValidate,
+  forgotValidate,
+  resetValidate
+} from '.'
 
 describe('validations', () => {
   describe('signInValidate()', () => {
@@ -55,6 +60,51 @@ describe('validations', () => {
         confirm_password: '123'
       }
       expect(signUpValidate(values).confirm_password).toMatchInlineSnapshot(
+        `"confirm password does not match with password"`
+      )
+    })
+  })
+
+  describe('forgotValidate()', () => {
+    it('should forgot validate empty fields', () => {
+      const values = { email: '' }
+      expect(forgotValidate(values)).toMatchObject({
+        email: '"email" is not allowed to be empty'
+      })
+    })
+
+    it('should forgot return invalid email error', () => {
+      const values = { email: 'invalid-email' }
+      expect(forgotValidate(values).email).toMatchInlineSnapshot(
+        `"\\"email\\" must be a valid email"`
+      )
+    })
+  })
+
+  describe('resetValidate()', () => {
+    it('should reset validate empty fields', () => {
+      const values = { password: '', confirm_password: '' }
+      expect(resetValidate(values)).toMatchObject({
+        password: expect.any(String)
+      })
+    })
+
+    it('should reset confirm password is empty', () => {
+      const values = {
+        password: '1234',
+        confirm_password: ''
+      }
+      expect(resetValidate(values).confirm_password).toMatchInlineSnapshot(
+        `"\\"confirm_password\\" is not allowed to be empty"`
+      )
+    })
+
+    it('should reset confirm password', () => {
+      const values = {
+        password: '1234',
+        confirm_password: '123'
+      }
+      expect(resetValidate(values).confirm_password).toMatchInlineSnapshot(
         `"confirm password does not match with password"`
       )
     })
