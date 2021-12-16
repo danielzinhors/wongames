@@ -11,7 +11,7 @@ import {
 import { useState } from 'react'
 import { FieldErrors, forgotValidate } from 'utils/validations'
 
-const FormResetPassword = () => {
+const FormForgotPassword = () => {
   const [success, setSuccess] = useState(false)
   const [formError, setFormError] = useState('')
   const [values, setValues] = useState({ email: '' })
@@ -92,4 +92,4 @@ const FormResetPassword = () => {
   )
 }
 
-export default FormResetPassword
+export default FormForgotPassword
