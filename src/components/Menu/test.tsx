@@ -38,10 +38,17 @@ describe('<Menu />', () => {
   })
 
   it('shold show whishilist and create account when logged in', () => {
-    render(<Menu username="will" />)
-    // expect(screen.getByText(/My profile/i)).toBeInTheDocument()
-    // expect(screen.getByText(/Wishilist/i)).toBeInTheDocument()
+    render(<Menu username="will" loading={false} />)
+    // expect(screen.queryByText(/My profile/i)).toBeInTheDocument()
+    // expect(screen.queryByText(/Wishilist/i)).toBeInTheDocument()
     expect(screen.queryByText(/Sign in/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/Sign Up/i)).not.toBeInTheDocument()
+  })
+
+  it('should not show signin or dropdownuser if loading', () => {
+    render(<Menu username="will" loading />)
+
+    expect(screen.queryByText(/My profile/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/Wishilist/i)).not.toBeInTheDocument()
   })
 })
