@@ -14,7 +14,8 @@ module.exports = {
     '!src/graphql/**/*ts',
     '!src/utils/apolloCache.ts',
     '!src/utils/tests/test-utils.tsx',
-    '!src/utils/protected-routes.ts'
+    '!src/utils/protected-routes.ts',
+    '!src/pages/api/auth/*.ts'
   ],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   modulePaths: ['<rootDir>/src/', '<rootDir>/.jest'],
