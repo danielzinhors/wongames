@@ -48,6 +48,17 @@ export const LinkAux = styled.a`
     }
   `}
 `
+export const FormSuccess = styled.div`
+  ${({ theme }) => css`
+    text-align: center;
+    color: ${theme.colors.black};
+    font-size: ${theme.font.sizes.small};
+    svg {
+      color: ${theme.colors.secondary};
+      width: 2.4rem;
+    }
+  `}
+`
 
 export const FormLoading = styled.img.attrs(() => ({
   src: '/img/dots.svg',

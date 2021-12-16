@@ -1,4 +1,4 @@
-import { Email } from '@styled-icons/material-outlined'
+import { Lock } from '@styled-icons/material-outlined'
 import { ErrorAlt } from '@styled-icons/boxicons-solid'
 import Button from 'components/Button'
 import TextField from 'components/TextField'
@@ -58,15 +58,23 @@ const FormForgotPassword = () => {
       )}
       <form onSubmit={handleSubmit}>
         <TextField
-          name="email"
-          placeholder="E-mail"
-          type="email"
-          error={fieldError?.email}
-          onInputChange={(value) => handleInput('email', value)}
-          icon={<Email />}
+          name="password"
+          placeholder="Password"
+          type="password"
+          error={fieldError?.password}
+          onInputChange={(value) => handleInput('password', value)}
+          icon={<Lock />}
+        />
+        <TextField
+          name="confirm_password"
+          placeholder="Confirm password"
+          type="password"
+          error={fieldError?.confirm_password}
+          onInputChange={(value) => handleInput('confirm_password', value)}
+          icon={<Lock />}
         />
         <Button type="submit" size="large" fullWidth disabled={loading}>
-          {loading ? <FormLoading /> : <span>Send e-mail</span>}
+          {loading ? <FormLoading /> : <span>Reset password</span>}
         </Button>
       </form>
     </FormWrapper>
