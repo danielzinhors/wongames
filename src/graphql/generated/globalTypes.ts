@@ -32,6 +32,10 @@ export enum ENUM_GAME_RATING {
   BR6 = "BR6",
 }
 
+export interface InputID {
+  id: string;
+}
+
 export interface UsersPermissionsRegisterInput {
   username: string;
   email: string;
@@ -47,6 +51,18 @@ export interface WishlistInput {
 
 export interface createWishlistInput {
   data?: WishlistInput | null;
+}
+
+export interface editWishlistInput {
+  user?: string | null;
+  games?: (string | null)[] | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
+export interface updateWishlistInput {
+  where?: InputID | null;
+  data?: editWishlistInput | null;
 }
 
 //==============================================================

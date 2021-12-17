@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { createWishlistInput } from "./globalTypes";
+import { updateWishlistInput } from "./globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: MutationUpdateWishlist
@@ -63,5 +63,5 @@ export interface MutationUpdateWishlist {
 }
 
 export interface MutationUpdateWishlistVariables {
-  input: createWishlistInput;
+  input?: updateWishlistInput | null;
 }
