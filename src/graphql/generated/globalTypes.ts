@@ -38,6 +38,17 @@ export interface UsersPermissionsRegisterInput {
   password: string;
 }
 
+export interface WishlistInput {
+  user?: string | null;
+  games?: (string | null)[] | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
+export interface createWishlistInput {
+  data?: WishlistInput | null;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================
