@@ -6,5 +6,28 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "editor.tabsize": 2
+  "editor.tabsize": 2,
+  "cSpell.words": [
+    "boxicons",
+    "cada",
+    "caso",
+    "chamadas",
+    "chamados",
+    "depois",
+    "eles",
+    "erro",
+    "escutando",
+    "fecha",
+    "ficar",
+    "intercepta",
+    "limpa",
+    "novamente",
+    "onde",
+    "reseta",
+    "sejam",
+    "sucesso",
+    "teste",
+    "todas",
+    "todos"
+  ]
 }
