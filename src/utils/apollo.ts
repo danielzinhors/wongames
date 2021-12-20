@@ -47,7 +47,7 @@ export function useApollo(initialState = null, session?: Session | null) {
   const store = useMemo(
     () => initializeApollo(initialState, session),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [initialState]
+    [initialState, session]
   )
   return store
 }
