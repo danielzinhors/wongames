@@ -17,21 +17,6 @@ export interface QueryWishlist_wishlists_games_developers {
   name: string;
 }
 
-export interface QueryWishlist_wishlists_games_publisher {
-  __typename: "Publisher";
-  name: string;
-}
-
-export interface QueryWishlist_wishlists_games_categories {
-  __typename: "Category";
-  name: string;
-}
-
-export interface QueryWishlist_wishlists_games_platforms {
-  __typename: "Platform";
-  name: string;
-}
-
 export interface QueryWishlist_wishlists_games {
   __typename: "Game";
   id: string;
@@ -39,9 +24,6 @@ export interface QueryWishlist_wishlists_games {
   slug: string;
   cover: QueryWishlist_wishlists_games_cover | null;
   developers: QueryWishlist_wishlists_games_developers[];
-  publisher: QueryWishlist_wishlists_games_publisher | null;
-  categories: QueryWishlist_wishlists_games_categories[];
-  platforms: QueryWishlist_wishlists_games_platforms[];
   price: number;
 }
 

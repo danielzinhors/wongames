@@ -19,21 +19,6 @@ export interface QueryUpcoming_upCommingGames_developers {
   name: string;
 }
 
-export interface QueryUpcoming_upCommingGames_publisher {
-  __typename: "Publisher";
-  name: string;
-}
-
-export interface QueryUpcoming_upCommingGames_categories {
-  __typename: "Category";
-  name: string;
-}
-
-export interface QueryUpcoming_upCommingGames_platforms {
-  __typename: "Platform";
-  name: string;
-}
-
 export interface QueryUpcoming_upCommingGames {
   __typename: "Game";
   id: string;
@@ -41,9 +26,6 @@ export interface QueryUpcoming_upCommingGames {
   slug: string;
   cover: QueryUpcoming_upCommingGames_cover | null;
   developers: QueryUpcoming_upCommingGames_developers[];
-  publisher: QueryUpcoming_upCommingGames_publisher | null;
-  categories: QueryUpcoming_upCommingGames_categories[];
-  platforms: QueryUpcoming_upCommingGames_platforms[];
   price: number;
 }
 

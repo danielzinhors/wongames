@@ -19,21 +19,6 @@ export interface MutationUpdateWishlist_updateWishlist_wishlist_games_developers
   name: string;
 }
 
-export interface MutationUpdateWishlist_updateWishlist_wishlist_games_publisher {
-  __typename: "Publisher";
-  name: string;
-}
-
-export interface MutationUpdateWishlist_updateWishlist_wishlist_games_categories {
-  __typename: "Category";
-  name: string;
-}
-
-export interface MutationUpdateWishlist_updateWishlist_wishlist_games_platforms {
-  __typename: "Platform";
-  name: string;
-}
-
 export interface MutationUpdateWishlist_updateWishlist_wishlist_games {
   __typename: "Game";
   id: string;
@@ -41,9 +26,6 @@ export interface MutationUpdateWishlist_updateWishlist_wishlist_games {
   slug: string;
   cover: MutationUpdateWishlist_updateWishlist_wishlist_games_cover | null;
   developers: MutationUpdateWishlist_updateWishlist_wishlist_games_developers[];
-  publisher: MutationUpdateWishlist_updateWishlist_wishlist_games_publisher | null;
-  categories: MutationUpdateWishlist_updateWishlist_wishlist_games_categories[];
-  platforms: MutationUpdateWishlist_updateWishlist_wishlist_games_platforms[];
   price: number;
 }
 

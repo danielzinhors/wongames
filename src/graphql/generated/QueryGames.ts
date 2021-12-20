@@ -17,21 +17,6 @@ export interface QueryGames_games_developers {
   name: string;
 }
 
-export interface QueryGames_games_publisher {
-  __typename: "Publisher";
-  name: string;
-}
-
-export interface QueryGames_games_categories {
-  __typename: "Category";
-  name: string;
-}
-
-export interface QueryGames_games_platforms {
-  __typename: "Platform";
-  name: string;
-}
-
 export interface QueryGames_games {
   __typename: "Game";
   id: string;
@@ -39,9 +24,6 @@ export interface QueryGames_games {
   slug: string;
   cover: QueryGames_games_cover | null;
   developers: QueryGames_games_developers[];
-  publisher: QueryGames_games_publisher | null;
-  categories: QueryGames_games_categories[];
-  platforms: QueryGames_games_platforms[];
   price: number;
 }
 
