@@ -1,3 +1,4 @@
+import 'session.mock'
 import { render, screen } from 'utils/tests/test-utils'
 import theme from 'styles/theme'
 
