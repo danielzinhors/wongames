@@ -7,6 +7,13 @@ import highlightMock from 'components/Highlight/mock'
 import Cart from '.'
 
 const props = {
+  session: {
+    jwt: 'token',
+    user: {
+      email: 'won@games.com'
+    },
+    expires: '13234'
+  },
   recommendedHighlight: highlightMock,
   recommendedTitle: 'You may like these games',
   recommendedGames: gamesMock
