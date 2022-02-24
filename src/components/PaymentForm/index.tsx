@@ -8,7 +8,8 @@ import { useCart } from 'hooks/use-cart'
 import { Session } from 'next-auth'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import { createPaymentIntent } from 'utils/stripe/methods'
+import { createPaymentIntent, createPayment } from 'utils/stripe/methods'
+import { PaymentIntent } from '@stripe/stripe-js'
 
 import * as S from './styles'
 
@@ -56,10 +57,25 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     setError(event.error ? event.error.message : '')
   }
 
+  const saveOrder = async (paymentIntent?: PaymentIntent) => {
+    const data = await createPayment({
+      items,
+      paymentIntent,
+      token: session.jwt as string
+    })
+    if (data.error !== '') {
+      setError(data.error)
+    } else {
+      setError(null)
+    }
+    return data
+  }
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     if (freeGames) {
       setLoading(true)
+      saveOrder()
       push('/success')
       return
     }
@@ -82,7 +98,10 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
       setError(`Payment failed ${payload.error.message}`)
     } else {
       setError(null)
-      push('/success')
+      saveOrder(payload.paymentIntent)
+      if (error === '') {
+        push('/success')
+      }
     }
     setLoading(false)
   }
