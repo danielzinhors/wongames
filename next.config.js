@@ -7,5 +7,8 @@ module.exports = withPWA({
     dest: 'public',
     disable: !isProd
   },
+  images: {
+    domains: ['localhost', 'res.cloudinary.com']
+  },
   reactStrictMode: true
 })
