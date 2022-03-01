@@ -23,6 +23,6 @@ WithPayment.args = {
     number: '**** **** **** 4326',
     flag: 'mastercard',
     img: '/img/cards/mastercard.png',
-    puschaseDate: 'Puschase made on 07/20/2020 at 20:32'
+    purchaseDate: 'Purchase made on 07/20/2020 at 20:32'
   }
 }

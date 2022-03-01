@@ -52,7 +52,7 @@ describe('<GameItem />', () => {
       number: '**** **** **** 4326',
       flag: 'mastercard',
       img: '/img/cards/mastercard.png',
-      puschaseDate: 'Puschase made on 07/20/2020 at 20:32'
+      purchaseDate: 'Purchase made on 07/20/2020 at 20:32'
     }
     render(<GameItem {...props} paymentInfo={paymentInfo} />)
 
@@ -62,6 +62,19 @@ describe('<GameItem />', () => {
     )
 
     expect(screen.getByText(paymentInfo.number)).toBeInTheDocument()
-    expect(screen.getByText(paymentInfo.puschaseDate)).toBeInTheDocument()
+    expect(screen.getByText(paymentInfo.purchaseDate)).toBeInTheDocument()
+  })
+
+  it('should render free game when theres no paymentInfo', () => {
+    const paymentInfo = {
+      flag: null,
+      img: null,
+      number: 'Free Game',
+      purchaseDate: 'Purchase made on 07/20/2020 at 20:32'
+    }
+
+    render(<GameItem {...props} paymentInfo={paymentInfo} />)
+
+    expect(screen.getByText(/free game/i)).toBeInTheDocument()
   })
 })
