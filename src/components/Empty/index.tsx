@@ -1,5 +1,6 @@
 import Button from 'components/Button'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import * as S from './styles'
 
@@ -15,10 +16,11 @@ const Empty = ({
   hasLink
 }: EmptyProps) => (
   <S.Wrapper>
-    <S.Image
+    <Image
       src="/img/empty.svg"
       alt="a gamer in a couch playing videogame"
-      role="image"
+      width={380}
+      height={285}
     />
     <S.Title>{title}</S.Title>
     <S.Description>{description}</S.Description>

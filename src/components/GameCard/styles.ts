@@ -34,12 +34,6 @@ export const ImageBox = styled.a`
       background-position: 40rem 0;
     }
   }
-
-  > img {
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-  }
 `
 
 export const Content = styled.div`

@@ -20,17 +20,30 @@ export const Wrapper = styled.main`
   `}
 `
 
-type ImagProps = {
-  src: string
-}
-export const Image = styled.div<ImagProps>`
-  ${({ theme, src }) => css`
+// type ImagProps = {
+//   src: string
+// }
+// export const ImageWapper = styled.div<ImagProps>`
+//   ${({ theme, src }) => css`
+//     width: 100%;
+//     height: 23rem;
+//     background-color: ${theme.colors.lightGray};
+//     background-image: url(${src});
+//     background-position: center center;
+//     background-size: cover;
+
+//     ${media.greaterThan('medium')`
+//       height: 58rem;
+//     `}
+//   `}
+// `
+
+export const ImageWapper = styled.div`
+  ${({ theme }) => css`
     width: 100%;
     height: 23rem;
     background-color: ${theme.colors.lightGray};
-    background-image: url(${src});
-    background-position: center center;
-    background-size: cover;
+    position: relative;
 
     ${media.greaterThan('medium')`
       height: 58rem;
