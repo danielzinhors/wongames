@@ -8,7 +8,7 @@ const Footer = () => (
   <S.Wrapper>
     <Logo color="black"></Logo>
     <S.Content>
-      <S.Column>
+      <S.Column aria-aria-labelledby="social-media">
         <Heading color="black" size="small" lineBottom lineColor="secondary">
           Contact us
         </Heading>
@@ -19,7 +19,7 @@ const Footer = () => (
           Follow us
         </Heading>
 
-        <nav aria-labelledby="social media">
+        <nav id="social-media">
           <a
             href="https://www.instagram.com/won-games"
             target="_blank"
@@ -51,12 +51,12 @@ const Footer = () => (
         </nav>
       </S.Column>
 
-      <S.Column>
+      <S.Column aria-labelledby="footer-resources">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Links
         </Heading>
 
-        <nav aria-labelledby="footer resources">
+        <nav id="footer-resources">
           <Link href="/">
             <a>Home</a>
           </Link>
@@ -69,7 +69,7 @@ const Footer = () => (
         </nav>
       </S.Column>
 
-      <S.Column aria-labelledby="footer-contact">
+      <S.Column aria-label="footer-contact">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Location
         </Heading>

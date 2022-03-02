@@ -7,6 +7,9 @@ import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import { Provider as AuthProvider } from 'next-auth/client'
 
+import { DefaultSeo } from 'next-seo'
+import SEO from '../../next-seo.config'
+
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 import { useApollo } from 'utils/apollo'
@@ -29,6 +32,7 @@ function App({ Component, pageProps }: AppProps) {
                   content="The best store the games in the world"
                 />
               </Head>
+              <DefaultSeo {...SEO} />
               <GlobalStyles />
               <NextNprogress
                 color={theme.colors.primary}

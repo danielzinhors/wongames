@@ -10,6 +10,7 @@ import Game, { GameTemplateProps } from '.'
 import { GameDetailsProps } from 'components/GameDetails'
 
 const props: GameTemplateProps = {
+  slug: 'game',
   cover: 'bg-image.jpg',
   gameInfo: gameInfoMock,
   gallery: galleryMock,
