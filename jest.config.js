@@ -15,7 +15,8 @@ module.exports = {
     '!src/utils/apolloCache.ts',
     '!src/utils/tests/test-utils.tsx',
     '!src/utils/protected-routes.ts',
-    '!src/pages/api/auth/*.ts'
+    '!src/pages/api/auth/*.ts',
+    '!src/components/Analytics/*.tsx'
   ],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   modulePaths: ['<rootDir>/src/', '<rootDir>/.jest'],

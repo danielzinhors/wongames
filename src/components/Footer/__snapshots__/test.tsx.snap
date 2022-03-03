@@ -160,7 +160,7 @@ exports[`<Footer /> should render 4 column topics 1`] = `
     class="c2"
   >
     <div
-      aria-aria-labelledby="social-media"
+      aria-labelledby="social-media"
       class="c3"
     >
       <h2

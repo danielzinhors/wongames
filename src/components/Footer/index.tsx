@@ -8,7 +8,7 @@ const Footer = () => (
   <S.Wrapper>
     <Logo color="black"></Logo>
     <S.Content>
-      <S.Column aria-aria-labelledby="social-media">
+      <S.Column aria-labelledby="social-media">
         <Heading color="black" size="small" lineBottom lineColor="secondary">
           Contact us
         </Heading>
