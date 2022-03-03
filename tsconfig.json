@@ -16,5 +16,5 @@
     "jsx": "preserve"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "src/graphql/generated/globalTypes.ts"]
+  "exclude": ["node_modules", "src/graphql/generated/globalTypes.ts", "cypress"]
 }
