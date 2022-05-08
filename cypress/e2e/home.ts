@@ -4,5 +4,6 @@ describe('Home page', () => {
   it('should render home sections', () => {
     //visitar a home
     cy.visit('/')
+    cy.shouldRenderBanner()
   })
 })
