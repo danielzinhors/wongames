@@ -25,14 +25,14 @@ const GameDetails = ({
   genres,
   publisher
 }: GameDetailsProps) => {
-  const paltformIcons = {
+  const platformIcons = {
     linux: <Linux title="Linux" size={18} />,
     mac: <Apple title="Mac" size={18} />,
     windows: <Windows title="Windows" size={18} />
   }
 
   return (
-    <S.Wrapper>
+    <S.Wrapper data-cy="game-details">
       <MediaMatch greaterThan="small">
         <Heading lineLeft lineColor="secondary">
           Game Details
@@ -57,7 +57,7 @@ const GameDetails = ({
           <S.Label>Platforms</S.Label>
           <S.IconsWrapper>
             {platforms.map((icon: Platform) => (
-              <S.Icon key={icon}>{paltformIcons[icon]}</S.Icon>
+              <S.Icon key={icon}>{platformIcons[icon]}</S.Icon>
             ))}
           </S.IconsWrapper>
         </S.Block>

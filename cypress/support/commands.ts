@@ -46,10 +46,12 @@ Cypress.Commands.add('shouldRenderBanner', () => {
   })
 })
 
-Cypress.Commands.add('shouldRenderShowcase', ({ name, highlight = false }) => {
+Cypress.Commands.add('shouldRenderShowcase', ({ name, highlight = false, gamecard = true }) => {
   cy.getByDataCy(`${name}`).within(() => {
     cy.findByRole('heading', { name }).should('exist')
-    cy.getByDataCy("game-card").should('have.length.gt', 0)
+    if (gamecard) {
+      cy.getByDataCy("game-card").should('have.length.gt', 0)
+    }
     cy.getByDataCy("Highlight").should(highlight ? 'exist' : 'not.exist')
     if (highlight) {
       cy.getByDataCy("Highlight").within(() => {

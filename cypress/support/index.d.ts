@@ -4,6 +4,7 @@
 type ShowcaseAttributes = {
   name: string
   highlight?: boolean
+  gamecard?: boolean
 }
 
 declare namespace Cypress {
