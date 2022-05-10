@@ -14,7 +14,8 @@ module.exports = {
     '!src/graphql/**/*ts',
     '!src/utils/apolloCache.ts',
     '!src/utils/tests/test-utils.tsx',
-    '!src/utils/protected-routes.ts',
+    '!src/utils/tests/test-utils.tsx',
+    '!src/utils/filter/fields.ts',
     '!src/pages/api/auth/*.ts',
     '!src/components/Analytics/*.tsx'
   ],

@@ -7,6 +7,11 @@ type ShowcaseAttributes = {
   gamecard?: boolean
 }
 
+type FieldsAttributes = {
+  label: string
+  name: string | number
+}
+
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -19,7 +24,7 @@ declare namespace Cypress {
     * Custom command to get element by data-cy values
     * @example cy.getByDataCy('selector')
     */
-     getByDataCy(selector: string): Chainable<Element>
+    getByDataCy(selector: string): Chainable<Element>
 
     /**
     * Custom command check banner in page
@@ -32,5 +37,11 @@ declare namespace Cypress {
     * @example cy.shouldRenderShowcase({ name: 'showcase', highlight: true })
     */
     shouldRenderShowcase(attrs: ShowcaseAttributes): Chainable<Element>
+
+    /**
+    * Custom command testa os fields by label
+    * @example cy.getFieldsExplore({ [windows, mac] })
+    */
+    getFields(fields: FieldsAttributes[]): Chainable<Element>
   }
 }
