@@ -68,3 +68,41 @@ Cypress.Commands.add('getFields', (fields) => {
   })
 
 })
+
+Cypress.Commands.add('shouldBeLessThan', (value) => {
+  cy.findByText(/^\$\d+(\.\d{1,2})?/)
+    .invoke('text') //transforma em texto
+    .then( $el => $el.replace('$', ''))
+    .then(parseFloat)
+    .should('be.lt', value)
+})
+
+Cypress.Commands.add('shouldBeGreaterThan', (value) => {
+  cy.findByText(/^\$\d+(\.\d{1,2})?/)
+    .invoke('text') //transforma em texto
+    .then( $el => $el.replace('$', ''))
+    .then(parseFloat)
+    .should('be.gt', value)
+})
+
+Cypress.Commands.add('shouldBeByPrice', (value) => {
+  cy.findByText(`Under $${value}`).click()
+    cy.wait(500)
+    cy.location('href').should('contain', `price_lte=${value}`)
+    cy.getByDataCy('game-card').first().within(() => {
+      cy.shouldBeLessThan(value)
+    })
+})
+
+Cypress.Commands.add('shouldBeByPlatform', (platform, url) => {
+  cy.findByText(platform).click()
+  cy.wait(500)
+  cy.location('href').should('contain', `platforms=${url}`)
+})
+
+Cypress.Commands.add('shouldBeByGenre', (genre) => {
+  cy.findByText(genre).click()
+  cy.wait(500)
+  let genreMin = genre.toLowerCase()
+  cy.location('href').should('contain', `categories=${genreMin}`)
+})
