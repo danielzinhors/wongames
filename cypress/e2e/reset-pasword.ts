@@ -50,5 +50,36 @@ describe('Reset Password', () => {
 
   })
 
+  it('should fill the input and redirect to home page with the user signed in', () => {
+    // rota do credentials do next-auth
+    cy.intercept('POST', '**/auth/callback/credentials*', {
+      statusCode: 200,
+      body: { user: {} }
+    })
 
+    // rota do Strapi
+    cy.intercept('POST', '**/auth/reset-password', {
+      statusCode: 200,
+      body: { user: { email: 'valid@email.com' } }
+    })
+
+    // rota de session do next-auth
+    cy.intercept('GET', '**/auth/session*', {
+      statusCode: 200,
+      body: { user: { name: "cypress" } }
+    })
+
+    cy.visit('/reset-password?code=12345')
+
+    // preencher as senhas (já com o token válido)
+    cy.findAllByPlaceholderText(/^password/i).type('pass123')
+    cy.findAllByPlaceholderText(/confirm password/i).type('pass123')
+    cy.findByRole('button', { name: /reset password/i}).click()
+
+    // redireciona para home
+    cy.url().should('eq', `${Cypress.config().baseUrl}/`)
+
+    // tem o usuário logado com o name no menu
+    cy.findByText(/cypress/i).should('exist')
+  });
 })
