@@ -1,6 +1,12 @@
 //load type definitions from Cypress module
 /// <reference types="cypress" />
 
+type User = {
+  username: string
+  email: string
+  password: string
+}
+
 type ShowcaseAttributes = {
   name: string
   highlight?: boolean
@@ -19,6 +25,12 @@ declare namespace Cypress {
      * @example cy.google()
      */
     google(): Chainable<Window>
+
+    /**
+     * Custom command to sign in.
+     * @example cy.signUp({username: 'will, email: 'm@gmail, password: '123})
+     */
+    signUp(user: User): Chainable<Element>
 
     /**
     * Custom command to get element by data-cy values
